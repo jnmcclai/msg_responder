@@ -19,7 +19,7 @@ class MsgResponder(Frame):
     def btnClickedPass(self):
         #button clicked method - sets var to 1 and gets comments
         result = 1
-        comment = self.textBox.get("1.0", END)
+        comment = "<comment>" + self.textBox.get("1.0", END) + "</comment>" 
         print str(result)
         print comment
         self.quit()
@@ -27,7 +27,7 @@ class MsgResponder(Frame):
     def btnClickedFail(self):
         #button clicked method - sets var to 0 and gets comments
         result = 0
-        comment = self.textBox.get("1.0", END)
+        comment = "<comment>" + self.textBox.get("1.0", END) + "</comment>" 
         print str(result)
         print comment
         self.quit()
@@ -52,7 +52,9 @@ class MsgResponder(Frame):
         label.pack()
         self.textBox = Text(frame, height = 2, width = 495)
         self.textBox.pack(side = BOTTOM)
-        self.textBox.insert(END, '#enter ye comments here')
+        #self.textBox.insert(END, '#enter ye comments here')
+        labelBox = Label(frame, text = "Actual Results:")
+        labelBox.pack(anchor = W, side = BOTTOM)
         passButton = Button(self, text="PASS", command=self.btnClickedPass)
         passButton.pack(side=RIGHT, padx=5, pady=5)
         failButton = Button(self, text="FAIL", command=self.btnClickedFail)

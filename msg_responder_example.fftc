@@ -63,6 +63,18 @@
                                             </ruleProperties>
                                         </processorInfo>
                                     </item>
+                                    <item>
+                                        <extractorInfo extractorType="query">
+                                            <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                                <query>mapped/Xml/comment</query>
+                                            </extractorProperties>
+                                        </extractorInfo>
+                                        <processorInfo ruleType="store">
+                                            <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                                <storageLocation>comment</storageLocation>
+                                            </ruleProperties>
+                                        </processorInfo>
+                                    </item>
                                 </analysisRules>
                                 <storeResponseAt>manual_step_1</storeResponseAt>
                                 <storeResponseText>true</storeResponseText>
@@ -199,9 +211,25 @@
                     <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
                     <useFieldsInCommand>false</useFieldsInCommand>
                 </item>
+                <item guid="c10ea83c-dbb1-46f3-919d-ec8f10a0677b" action="comment">
+                    <command>
+                        <body>Printing out the comments</body>
+                    </command>
+                    <nestedSteps>
+                        <item guid="8fadb972-d89b-41ac-9475-ab60cf158b03" action="eval">
+                            <command>
+                                <body>puts $comment</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                            <useFieldsInCommand>false</useFieldsInCommand>
+                        </item>
+                    </nestedSteps>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                    <useFieldsInCommand>false</useFieldsInCommand>
+                </item>
                 <item guid="12296af7-958e-4527-addc-8393421ec472" action="comment">
                     <command>
-                        <body>Automated portion of test case</body>
+                        <body>Automated portion of test case  </body>
                     </command>
                     <nestedSteps>
                         <item guid="7e7413f4-677a-4ed2-8edd-ee34a6d075b9" action="eval">
