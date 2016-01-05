@@ -1,0 +1,86 @@
+#simple python messenger application
+
+import argparse
+from Tkinter import *
+from ttk import Frame, Button, Style
+
+result = 0
+comment = ""
+
+class MsgResponder(Frame):
+  
+    def __init__(self, parent, text):
+        Frame.__init__(self, parent)   
+         
+        self.parent = parent
+        self.text = text
+        self.initUI()
+
+    def btnClickedPass(self):
+        #button clicked method - sets var to 1 and gets comments
+        result = 1
+        comment = self.textBox.get("1.0", END)
+        print str(result)
+        print comment
+        self.quit()
+
+    def btnClickedFail(self):
+        #button clicked method - sets var to 0 and gets comments
+        result = 0
+        comment = self.textBox.get("1.0", END)
+        print str(result)
+        print comment
+        self.quit()
+        
+    def initUI(self):
+        
+        #some aesthetic definitions 
+        self.parent.title("Message Responder")
+        self.style = Style()
+        self.style.theme_use("classic")
+
+
+        #building frame
+        frame = Frame(self, relief=RAISED, borderwidth=1)
+        frame.pack(fill=BOTH, expand=True)
+
+
+        self.pack(fill=BOTH, expand=True)
+        
+        #adding some widgets
+        label = Label(frame, text = self.text, wraplength = 495, justify = LEFT)
+        label.pack()
+        self.textBox = Text(frame, height = 2, width = 495)
+        self.textBox.pack(side = BOTTOM)
+        self.textBox.insert(END, '#enter ye comments here')
+        passButton = Button(self, text="PASS", command=self.btnClickedPass)
+        passButton.pack(side=RIGHT, padx=5, pady=5)
+        failButton = Button(self, text="FAIL", command=self.btnClickedFail)
+        failButton.pack(side=RIGHT)
+
+
+
+              
+
+def main(text):
+  
+    root = Tk()
+    root.geometry("500x300+300+300")
+    app = MsgResponder(root, text)
+    root.mainloop()  
+
+
+if __name__ == '__main__':
+
+    #handle command arguments
+    parser = argparse.ArgumentParser(description = 'Message responder - simple GUI to display user defined text and return value based on click of button to pass or fail a test. Returns value PASS=1, FAIL=0')
+    parser.add_argument('text', help = 'text to pass in and display on label')
+    
+    args = parser.parse_args()
+
+    if args.text:
+        text = args.text
+
+    #start main
+    print "starting msg responder..."
+    main(text)  
