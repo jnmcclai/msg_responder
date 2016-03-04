@@ -1,4 +1,5 @@
 #simple python messenger application
+#ver02
 
 import argparse
 from Tkinter import *
