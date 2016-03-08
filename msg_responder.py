@@ -21,11 +21,16 @@ class MsgResponder(Frame):
         self.qc_step_name = qc_step_name
         self.qc_step_description = qc_step_description
         self.qc_step_expected_results = qc_step_expected_results
+        self.txt_clr_count = 0
         self.initUI()
 
     def clearText(self, event):
         #clear actual results text box event when clicked
-        self.text_qc_results_actual.delete("1.0", END)
+        if not self.txt_clr_count:
+            self.text_qc_results_actual.delete("1.0", END)
+            self.txt_clr_count = 1
+        else:
+            pass
 
     def btnClickedPass(self):
         #button clicked method - sets var to 1 and gets comments
