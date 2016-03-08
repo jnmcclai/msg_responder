@@ -83,14 +83,14 @@ class MsgResponder(Frame):
         pane_bottom.pack(fill=BOTH, expand = 1)
 
         #add qc desc label frame to the top pane and a label for the text
-        qc_step_description = "\n" + self.qc_step_description
+        qc_step_description = "\n" + self.qc_step_description.replace('\\n', '\n')
         label_frame_qc_desc = LabelFrame(pane_top, text="QC Description")
         label_qc_desc = Label(label_frame_qc_desc, text=qc_step_description, wraplength=1020, justify=LEFT)
         label_qc_desc.pack(anchor=W)
         pane_top.add(label_frame_qc_desc)
 
         #add qc expected results label frame to the bottom pane and a label for the text
-        qc_step_expected_results = "\n" + self.qc_step_expected_results
+        qc_step_expected_results = "\n" + self.qc_step_expected_results.replace('\\n', '\n')
         label_frame_qc_results_expected = LabelFrame(pane_bottom, text="QC Expected Results", width=500)
         label_frame_qc_results_expected.pack_propagate(0)
         label_qc_results_expected = Label(label_frame_qc_results_expected, text=qc_step_expected_results, wraplength=496, justify=LEFT)
