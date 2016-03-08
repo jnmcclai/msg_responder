@@ -31,11 +31,13 @@ class MsgResponder(Frame):
         #button clicked method - sets var to 1 and gets comments
         result = 1
         #get the qc step name, description, expected, and actual fields and return in mock xml
-        qc_step_name = "<qc_step_name>" + self.qc_step_name + "</qc_step_name>"
-        qc_step_description = "<qc_step_description>" + self.qc_step_description + "</qc_step_description>"
-        qc_step_expected = "<qc_step_expected>" + self.qc_step_expected_results + "</qc_step_expected>" 
+        # qc_step_name = "<qc_step_name>" + self.qc_step_name + "</qc_step_name>"
+        # qc_step_description = "<qc_step_description>" + self.qc_step_description + "</qc_step_description>"
+        # qc_step_expected = "<qc_step_expected>" + self.qc_step_expected_results + "</qc_step_expected>" 
         qc_step_actual = "<qc_step_actual>" + self.text_qc_results_actual.get("1.0", END) + "</qc_step_actual>" 
-        output = qc_step_name + "\n" + qc_step_description + "\n" + qc_step_expected + "\n" + qc_step_actual
+        #output = qc_step_name + qc_step_description + qc_step_expected + qc_step_actual
+        output = qc_step_actual
+        output = "<qc>{0}</qc>".format(output)
         print str(result)
         print output
         self.quit()
@@ -44,11 +46,13 @@ class MsgResponder(Frame):
         #button clicked method - sets var to 0 and gets comments
         result = 0
         #get the qc step name, description, expected, and actual fields and return in mock xml
-        qc_step_name = "<qc_step_name>" + self.qc_step_name + "</qc_step_name>"
-        qc_step_description = "<qc_step_description>" + self.qc_step_description + "</qc_step_description>"
-        qc_step_expected = "<qc_step_expected>" + self.qc_step_expected_results + "</qc_step_expected>" 
+        # qc_step_name = "<qc_step_name>" + self.qc_step_name + "</qc_step_name>"
+        # qc_step_description = "<qc_step_description>" + self.qc_step_description + "</qc_step_description>"
+        # qc_step_expected = "<qc_step_expected>" + self.qc_step_expected_results + "</qc_step_expected>" 
         qc_step_actual = "<qc_step_actual>" + self.text_qc_results_actual.get("1.0", END) + "</qc_step_actual>" 
-        output = qc_step_name + "\n" + qc_step_description + "\n" + qc_step_expected + "\n" + qc_step_actual
+        #output = qc_step_name + qc_step_description + qc_step_expected + qc_step_actual
+        output = qc_step_actual
+        output = "<qc>{0}</qc>".format(output)
         print str(result)
         print output
         self.quit()
